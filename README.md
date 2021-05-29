@@ -11,7 +11,7 @@ Execute to run:
 * /stock
 
 
-body:
+example body :
 
 {
 	"id": "ITUB4",
