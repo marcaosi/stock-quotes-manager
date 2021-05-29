@@ -9,7 +9,10 @@ Execute to run:
 
 ### POST
 * /stock
+
+
 body:
+
 {
 	"id": "ITUB4",
 	"quotes": [
