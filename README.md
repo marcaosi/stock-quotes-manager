@@ -22,3 +22,7 @@ body:
 		}
 	]
 }
+
+### GET
+* /stock/
+* /stock/{id}
