@@ -1,0 +1,27 @@
+version: '3'
+services:
+  stock_quote_manager:
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    image: stock_quote_manager/api
+    ports:
+      - '8080:8080'
+      - '5885:5885'
+    environment:
+      - ADDITIONAL_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5885 -Xmx16 -Xms128m -XX:MaxMetaspaceSize=128m
+      - PROFILE=dev
+    links:
+      - db
+  db:
+    image: mysql:5.6
+    ports:
+      - '3306:3306'
+    environment:
+      - MYSQL_ROOT_HOST=%
+      - MYSQL_DATABASE=stock_manager
+      - MYSQL_USER=root
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+    volumes:
+      - ./docker/volume_mysql:/var/lib/mysql
+    
